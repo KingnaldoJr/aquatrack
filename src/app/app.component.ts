@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -11,7 +10,6 @@ import { MatListModule } from '@angular/material/list';
   standalone: true,
   imports: [
     RouterOutlet,
-    NavbarComponent,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule

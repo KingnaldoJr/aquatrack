@@ -4,7 +4,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CondominiumDialogComponent, CondominiumData } from '../condominium-dialog/condominium-dialog.component'; // Adjust path as needed
+import { CondominiumDialogComponent, CondominiumData } from '../condominium-dialog/condominium-dialog.component';
 
 // Mock Data
 const MOCK_CONDOMINIUMS: CondominiumData[] = [
@@ -23,7 +23,6 @@ const MOCK_CONDOMINIUMS: CondominiumData[] = [
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    CondominiumDialogComponent // If CondominiumDialogComponent is standalone and needs to be used in template (not the case here, but good practice if it were)
   ],
   templateUrl: './condominiums.component.html',
   styleUrl: './condominiums.component.scss'
