@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{ data ? 'Edit' : 'Add' }} Condominium</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="condominiumForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Condominium Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter condominium name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <textarea matInput formControlName="address" placeholder="Enter address"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contact Person</mat-label>
+      <input matInput formControlName="contactPerson" placeholder="Enter contact person">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contact Email</mat-label>
+      <input matInput formControlName="contactEmail" type="email" placeholder="Enter contact email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contact Phone</mat-label>
+      <input matInput formControlName="contactPhone" type="tel" placeholder="Enter contact phone">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!condominiumForm.valid">Save</button>
+</mat-dialog-actions>

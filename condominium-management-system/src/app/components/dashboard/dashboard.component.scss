@@ -1,0 +1,141 @@
+.dashboard-container {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    margin: 0;
+    font-size: 2em;
+    color: var(--primary-accent-color); // Use global var
+  }
+}
+
+.date-range-selector {
+  width: 250px; // Adjust as needed
+}
+
+.key-metrics {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 30px;
+
+  mat-card {
+    flex: 1;
+    text-align: center;
+    background-color: #f9f9f9; // Light background for cards
+
+    mat-card-title {
+      font-size: 1.1em;
+      color: var(--secondary-text-color); // Use global var
+    }
+
+    .metric-value {
+      font-size: 2em;
+      font-weight: bold;
+      color: var(--primary-accent-color); // Use global var
+      margin-top: 10px;
+    }
+  }
+}
+
+.chart-card {
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+
+  mat-card-title {
+    font-size: 1.3em;
+    color: var(--primary-accent-color); // Use global var
+  }
+
+  mat-card-content p {
+    text-align: center;
+    padding: 20px;
+    color: var(--secondary-text-color); // Use global var
+  }
+}
+
+.table-container {
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--primary-accent-color); // Use global var
+  }
+
+  .mat-elevation-z8 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); // Softer shadow
+  }
+
+  .mat-mdc-table { // Targeting Material v15+ table
+    width: 100%;
+  }
+
+  .mat-mdc-header-cell { // Targeting Material v15+ header cell
+    background-color: var(--background-color); // Use global var
+    color: var(--text-color); // Use global var
+    font-weight: bold;
+  }
+
+  .mat-mdc-cell { // Targeting Material v15+ cell
+    padding: 10px;
+    color: var(--secondary-text-color); // Use global var for cell text
+  }
+
+  .status-above-average {
+    color: #d32f2f; // Red - specific status color, keep as is or make variable
+    font-weight: bold;
+  }
+
+  .status-below-average {
+    color: #388e3c; // Green - specific status color, keep as is or make variable
+  }
+
+  .status-average {
+    color: #f57c00; // Orange - specific status color, keep as is or make variable
+  }
+
+  .mat-mdc-paginator { // Targeting Material v15+ paginator
+    margin-top: 20px;
+    background-color: #f9f9f9;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .date-range-selector {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  .key-metrics {
+    flex-direction: column;
+  }
+
+  .table-container {
+    overflow-x: auto; // Allow horizontal scrolling for the table on small screens
+  }
+
+  .mat-mdc-table {
+    min-width: 600px; // Ensure table has a minimum width to make scrolling meaningful
+  }
+
+  .mat-mdc-header-cell, .mat-mdc-cell {
+    font-size: 0.9em; // Slightly smaller font for table cells on mobile
+    padding: 8px;
+  }
+
+  .metric-value {
+    font-size: 1.8em; // Slightly smaller metric values
+  }
+}

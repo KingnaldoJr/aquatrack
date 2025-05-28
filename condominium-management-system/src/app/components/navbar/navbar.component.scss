@@ -1,0 +1,111 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; // Ensure it's above other content
+  background-color: var(--background-color); // Use global var
+  color: var(--text-color); // Use global var
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; // Allow links to take available space and center
+
+  a {
+    color: #757575; // Lighter gray for inactive links
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 10px 0;
+    border-bottom: 2px solid transparent; // For active link indicator
+
+    &:hover {
+      color: #333; // Darken on hover
+    }
+
+    &.active-link {
+      color: var(--text-color); // Use global var
+      border-bottom-color: var(--primary-accent-color); // Use global var for active indicator
+    }
+  }
+}
+
+.spacer {
+  // flex-grow: 1; // Removed to allow nav-links to truly center if possible.
+                  // If user icon needs to be far right, nav-links might need fixed width or different flex setup.
+}
+
+button[mat-icon-button] {
+  color: var(--text-color); // Use global var
+}
+
+// Styling for the menu items if needed
+.mat-mdc-menu-item {
+  color: var(--text-color); // Use global var
+}
+
+// Override primary color for the toolbar if it was set globally
+mat-toolbar.navbar {
+  background-color: var(--background-color); // Use global var
+  color: var(--text-color); // Use global var
+  height: 64px; // Default Material toolbar height
+}
+
+// Ensure the icon in the button is the correct color
+button[mat-icon-button] mat-icon {
+  color: var(--text-color); // Use global var
+}
+
+
+@media (max-width: 768px) {
+  mat-toolbar.navbar {
+    height: 56px; // Smaller toolbar height on mobile
+    padding: 0 8px; // Reduce padding
+  }
+  .logo {
+    font-size: 1.2em;
+  }
+  .nav-links {
+    // Example: Hide text and show icons, or stack them.
+    // For simplicity, let's try to make them smaller and wrap.
+    // This might still be crowded on very small screens.
+    // A more robust solution would be a hamburger menu.
+    a {
+      margin: 0 5px;
+      padding: 8px 0;
+      font-size: 0.9em; // Slightly smaller font
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    // On very small screens, consider hiding links or using icons only
+    // For now, just let them wrap and hope for the best or rely on horizontal scroll
+    // A hamburger menu is the proper fix for many links.
+    // display: none; // Example: hide links
+    // Instead of hiding, let's ensure they can wrap and don't cause overflow
+    justify-content: flex-start; // Align to start when wrapping
+    flex-wrap: wrap;
+    a {
+      margin: 2px 5px; // Adjust margin for wrapped items
+    }
+  }
+   .spacer {
+    display: none; // Hide spacer to give more room to links and icon
+  }
+  button[mat-icon-button] {
+    padding: 0 8px; // Adjust padding for user icon
+  }
+}

@@ -1,0 +1,52 @@
+<div class="data-entry-container">
+  <div class="data-entry-header">
+    <h1>Water Usage Data Entry</h1>
+  </div>
+
+  <form [formGroup]="dataEntryForm" (ngSubmit)="onSubmit()" class="data-entry-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Select Condominium</mat-label>
+      <mat-select formControlName="condominium">
+        <mat-option *ngFor="let condo of condominiums" [value]="condo.id">
+          {{condo.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Select House Number</mat-label>
+      <mat-select formControlName="houseNumber">
+        <mat-option *ngFor="let house of houses" [value]="house.id">
+          {{house.number}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- Alternative simple input for House Number if select is too complex for now
+    <mat-form-field appearance="outline">
+      <mat-label>House Number</mat-label>
+      <input matInput formControlName="houseNumber" placeholder="e.g., A101">
+    </mat-form-field>
+    -->
+
+    <mat-form-field appearance="outline">
+      <mat-label>Current Meter Reading (m³)</mat-label>
+      <input matInput type="number" formControlName="currentReading" placeholder="Enter current reading">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Previous Meter Reading (m³)</mat-label>
+      <input matInput type="number" formControlName="previousReading" placeholder="Enter previous reading">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Reading Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="readingDate" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!dataEntryForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

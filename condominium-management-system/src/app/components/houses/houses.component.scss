@@ -1,0 +1,59 @@
+.houses-container {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.breadcrumbs {
+  margin-bottom: 20px;
+  font-size: 0.9em;
+  color: #666;
+
+  a {
+    color: #3f51b5; // Material primary color
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    color: #333; // Current page
+  }
+}
+
+.houses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #3f51b5; // Material primary color
+  }
+}
+
+.table-container {
+  .mat-elevation-z8 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); // Softer shadow
+  }
+
+  .mat-mdc-table { // Targeting Material v15+ table
+    width: 100%;
+  }
+
+  .mat-mdc-header-cell { // Targeting Material v15+ header cell
+    background-color: #e8eaf6; // Lighter shade of primary for header
+    color: #333;
+    font-weight: bold;
+  }
+
+  .mat-mdc-cell { // Targeting Material v15+ cell
+    padding: 10px;
+  }
+
+  .mat-icon-button {
+    margin-right: 8px; // Space between action buttons if more are added
+  }
+}

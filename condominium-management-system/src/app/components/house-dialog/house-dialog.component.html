@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ data ? 'Edit' : 'Add' }} House</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="houseForm">
+    <mat-form-field appearance="outline">
+      <mat-label>House Number</mat-label>
+      <input matInput formControlName="houseNumber" placeholder="Enter house number (e.g., A101)">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Resident Name</mat-label>
+      <input matInput formControlName="residentName" placeholder="Enter resident's name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contact Email</mat-label>
+      <input matInput formControlName="contactEmail" type="email" placeholder="Enter contact email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contact Phone</mat-label>
+      <input matInput formControlName="contactPhone" type="tel" placeholder="Enter contact phone">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!houseForm.valid">Save</button>
+</mat-dialog-actions>
