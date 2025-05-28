@@ -1,56 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
-
-// 1. Typography & Root Color Variables
 :root {
-  --background-color: #f0f0f0; // Light gray background
-  // --background-color: #ffffff; // Alternative: white background
-  --primary-accent-color: #4a90e2; // A pleasant blue
+  --background-color: #f0f0f0;
+  --primary-accent-color: #4a90e2;
   --text-color: #333333;
   --secondary-text-color: #666666;
-  --mat-primary-color-for-theme: #3f51b5; // Default Material primary
-  --mat-accent-color-for-theme: #ff4081;  // Default Material accent
+  --mat-primary-color-for-theme: #3f51b5;
+  --mat-accent-color-for-theme: #ff4081;
 }
 
-html, body { 
-  height: 100%; 
+html, body {
+  height: 100%;
 }
 
-body { 
-  margin: 0; 
+body {
+  margin: 0;
   font-family: "Roboto", "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
 }
 
-// 3. Spacing for main layout containers (initial pass)
-// .sidenav-container in app.component.scss already handles content margin from navbar
-// .content-below-navbar in app.component.scss already handles margin-top
-
-// General padding for routed component content might be useful
-// This will be applied to the host element of components like dashboard, condominiums etc.
-// if they are direct children of router-outlet in mat-sidenav-content.
-// However, components already have their own padding (e.g. .dashboard-container)
-// So, this might be redundant or could be adjusted.
-// Let's assume component-specific padding is preferred for now.
-
-// 6. Tables (MatTable) - Basic Zebra Striping (Optional, can be refined)
 .mat-mdc-table .mat-mdc-row:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.02); // Very subtle striping
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .mat-mdc-row:hover {
-    background-color: rgba(0, 0, 0, 0.04); // Subtle hover
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 
-// Styles for .sidenav-container, .sidenav, mat-sidenav-content were previously here.
-// These are more specific to app.component.html's layout.
-// They have been moved to app.component.scss in a previous step (or should be if not already).
-// Let's verify app.component.scss to ensure proper main content padding.
-
-// Placeholder for other global styles (e.g., links, headings) if needed.
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color); // Ensure headings also use the main text color by default
+  color: var(--text-color);
 }
 
 a {

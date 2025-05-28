@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true, // Corrected to true as it's a new component and likely intended to be standalone
+  standalone: true,
   imports: [
     MatToolbarModule,
     MatButtonModule,

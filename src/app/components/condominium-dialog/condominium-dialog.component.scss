@@ -1,19 +1,18 @@
 mat-dialog-content {
   display: flex;
   flex-direction: column;
-  gap: 15px; // Spacing between form fields
-  padding-top: 20px; // Add some padding at the top of the content
+  gap: 15px;
+  padding-top: 20px;
 }
 
 mat-form-field {
-  width: 100%; // Make form fields take full width
+  width: 100%;
 }
 
 mat-dialog-actions {
-  padding: 16px 24px; // Standard Material Dialog padding for actions
+  padding: 16px 24px;
 }
 
-// Adjust textarea height if needed
 textarea[matInput] {
   min-height: 80px;
 }

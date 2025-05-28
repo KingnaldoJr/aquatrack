@@ -12,30 +12,30 @@
   h1 {
     margin: 0;
     font-size: 2em;
-    color: #3f51b5; // Material primary color
+    color: #3f51b5;
   }
 }
 
 .table-container {
   .mat-elevation-z8 {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); // Softer shadow
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
 
-  .mat-mdc-table { // Targeting Material v15+ table
+  .mat-mdc-table {
     width: 100%;
   }
 
-  .mat-mdc-header-cell { // Targeting Material v15+ header cell
-    background-color: #e8eaf6; // Lighter shade of primary for header
+  .mat-mdc-header-cell {
+    background-color: #e8eaf6;
     color: #333;
     font-weight: bold;
   }
 
-  .mat-mdc-cell { // Targeting Material v15+ cell
+  .mat-mdc-cell {
     padding: 10px;
   }
 
   .mat-icon-button {
-    margin-right: 8px; // Space between action buttons if more are added
+    margin-right: 8px;
   }
 }

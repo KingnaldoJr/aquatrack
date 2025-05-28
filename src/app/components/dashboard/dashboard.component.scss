@@ -12,12 +12,12 @@
   h1 {
     margin: 0;
     font-size: 2em;
-    color: var(--primary-accent-color); // Use global var
+    color: var(--primary-accent-color);
   }
 }
 
 .date-range-selector {
-  width: 250px; // Adjust as needed
+  width: 250px;
 }
 
 .key-metrics {
@@ -29,17 +29,17 @@
   mat-card {
     flex: 1;
     text-align: center;
-    background-color: #f9f9f9; // Light background for cards
+    background-color: #f9f9f9;
 
     mat-card-title {
       font-size: 1.1em;
-      color: var(--secondary-text-color); // Use global var
+      color: var(--secondary-text-color);
     }
 
     .metric-value {
       font-size: 2em;
       font-weight: bold;
-      color: var(--primary-accent-color); // Use global var
+      color: var(--primary-accent-color);
       margin-top: 10px;
     }
   }
@@ -51,13 +51,13 @@
 
   mat-card-title {
     font-size: 1.3em;
-    color: var(--primary-accent-color); // Use global var
+    color: var(--primary-accent-color);
   }
 
   mat-card-content p {
     text-align: center;
     padding: 20px;
-    color: var(--secondary-text-color); // Use global var
+    color: var(--secondary-text-color);
   }
 }
 
@@ -65,48 +65,47 @@
   h2 {
     font-size: 1.5em;
     margin-bottom: 15px;
-    color: var(--primary-accent-color); // Use global var
+    color: var(--primary-accent-color);
   }
 
   .mat-elevation-z8 {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); // Softer shadow
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
 
-  .mat-mdc-table { // Targeting Material v15+ table
+  .mat-mdc-table {
     width: 100%;
   }
 
-  .mat-mdc-header-cell { // Targeting Material v15+ header cell
-    background-color: var(--background-color); // Use global var
-    color: var(--text-color); // Use global var
+  .mat-mdc-header-cell {
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-weight: bold;
   }
 
-  .mat-mdc-cell { // Targeting Material v15+ cell
+  .mat-mdc-cell {
     padding: 10px;
-    color: var(--secondary-text-color); // Use global var for cell text
+    color: var(--secondary-text-color);
   }
 
   .status-above-average {
-    color: #d32f2f; // Red - specific status color, keep as is or make variable
+    color: #d32f2f;
     font-weight: bold;
   }
 
   .status-below-average {
-    color: #388e3c; // Green - specific status color, keep as is or make variable
+    color: #388e3c;
   }
 
   .status-average {
-    color: #f57c00; // Orange - specific status color, keep as is or make variable
+    color: #f57c00;
   }
 
-  .mat-mdc-paginator { // Targeting Material v15+ paginator
+  .mat-mdc-paginator {
     margin-top: 20px;
     background-color: #f9f9f9;
   }
 }
 
-// Responsive adjustments
 @media (max-width: 768px) {
   .dashboard-header {
     flex-direction: column;
@@ -123,19 +122,19 @@
   }
 
   .table-container {
-    overflow-x: auto; // Allow horizontal scrolling for the table on small screens
+    overflow-x: auto;
   }
 
   .mat-mdc-table {
-    min-width: 600px; // Ensure table has a minimum width to make scrolling meaningful
+    min-width: 600px;
   }
 
   .mat-mdc-header-cell, .mat-mdc-cell {
-    font-size: 0.9em; // Slightly smaller font for table cells on mobile
+    font-size: 0.9em;
     padding: 8px;
   }
 
   .metric-value {
-    font-size: 1.8em; // Slightly smaller metric values
+    font-size: 1.8em;
   }
 }

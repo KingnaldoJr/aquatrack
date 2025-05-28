@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,7 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CondominiumDialogComponent, CondominiumData } from '../condominium-dialog/condominium-dialog.component';
 
-// Mock Data
 const MOCK_CONDOMINIUMS: CondominiumData[] = [
   { id: '1', name: 'Green Valley Condos', address: '123 Green Valley Rd, Springfield', contactPerson: 'Alice Johnson', contactEmail: 'alice@gvcondos.com', contactPhone: '555-1234' },
   { id: '2', name: 'Sunset Heights', address: '456 Sunset Blvd, Metropolis', contactPerson: 'Bob Williams', contactEmail: 'bob@sunset.com', contactPhone: '555-5678' },
@@ -26,41 +25,34 @@ const MOCK_CONDOMINIUMS: CondominiumData[] = [
   templateUrl: './condominiums.component.html',
   styleUrl: './condominiums.component.scss'
 })
-export class CondominiumsComponent implements OnInit {
+export class CondominiumsComponent {
   displayedColumns: string[] = ['name', 'address', 'contactPerson', 'actions'];
   dataSource = new MatTableDataSource<CondominiumData>(MOCK_CONDOMINIUMS);
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    // Data is initialized
-  }
-
   openDialog(data?: CondominiumData): void {
     const dialogRef = this.dialog.open(CondominiumDialogComponent, {
-      width: '500px', // Adjust width as needed
-      data: data ? { ...data } : null // Pass a copy of data or null for new entry
+      width: '500px',
+      data: data ? { ...data } : null
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Dialog result:', result);
-        // Here you would typically handle the result:
-        // - If it's a new entry (no id), add it to your data source and call API.
-        // - If it's an existing entry (has id), update it in your data source and call API.
-        if (result.id) { // Existing item
+        if (result.id) {
           const index = this.dataSource.data.findIndex(item => item.id === result.id);
           if (index > -1) {
             const currentData = this.dataSource.data;
             currentData[index] = result;
-            this.dataSource.data = currentData; // Trigger table update
+            this.dataSource.data = currentData;
           }
-        } else { // New item
+        } else {
           const newId = (Math.max(...this.dataSource.data.map(item => parseInt(item.id || '0'))) + 1).toString(); // Simple ID generation
           const newItem = { ...result, id: newId };
           const currentData = this.dataSource.data;
           currentData.push(newItem);
-          this.dataSource.data = currentData; // Trigger table update
+          this.dataSource.data = currentData;
         }
       }
     });

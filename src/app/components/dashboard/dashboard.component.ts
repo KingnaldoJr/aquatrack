@@ -1,13 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'; // For the date range input
+import { MatInputModule } from '@angular/material/input';
 
-// Mock Data Interface
 export interface HouseData {
   houseNumber: string;
   residentName: string;
@@ -17,7 +16,6 @@ export interface HouseData {
   status: 'Above Average' | 'Below Average' | 'Average';
 }
 
-// Mock Data
 const MOCK_DATA: HouseData[] = [
   { houseNumber: 'A101', residentName: 'John Doe', currentReading: 1200, previousReading: 1100, consumption: 100, status: 'Below Average' },
   { houseNumber: 'A102', residentName: 'Jane Smith', currentReading: 1550, previousReading: 1350, consumption: 200, status: 'Above Average' },
@@ -33,7 +31,7 @@ const MOCK_DATA: HouseData[] = [
   selector: 'app-dashboard',
   standalone: true,
   imports: [
-    CommonModule, // Add CommonModule here for ngClass
+    CommonModule,
     MatCardModule,
     MatTableModule,
     MatSortModule,
@@ -44,7 +42,7 @@ const MOCK_DATA: HouseData[] = [
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements AfterViewInit {
   displayedColumns: string[] = ['houseNumber', 'residentName', 'currentReading', 'previousReading', 'consumption', 'status'];
   dataSource = new MatTableDataSource<HouseData>(MOCK_DATA);
 
@@ -52,10 +50,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor() { }
-
-  ngOnInit(): void {
-    // Data source is already initialized with MOCK_DATA
-  }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;

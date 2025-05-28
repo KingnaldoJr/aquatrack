@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
- // For *ngFor
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, NativeDateAdapter } from '@angular/material/core'; // For Datepicker
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 
 interface Condo {
@@ -16,7 +15,7 @@ interface Condo {
 interface House {
   id: string;
   number: string;
-  condoId: string; // To simulate filtering if needed later
+  condoId: string;
 }
 
 @Component({
@@ -33,9 +32,8 @@ interface House {
 ],
   templateUrl: './data-entry.component.html',
   styleUrl: './data-entry.component.scss',
-  // providers: [NativeDateAdapter] // Not needed if MatNativeDateModule is imported
 })
-export class DataEntryComponent implements OnInit {
+export class DataEntryComponent {
   dataEntryForm: FormGroup;
 
   condominiums: Condo[] = [
@@ -44,7 +42,7 @@ export class DataEntryComponent implements OnInit {
     { id: 'condo3', name: 'Mountain Ridge Estates' }
   ];
 
-  houses: House[] = [ // Mock houses, can be filtered by selected condominium in a real app
+  houses: House[] = [
     { id: 'h1', number: 'A101', condoId: 'condo1' },
     { id: 'h2', number: 'A102', condoId: 'condo1' },
     { id: 'h3', number: 'B203', condoId: 'condo2' },
@@ -52,7 +50,7 @@ export class DataEntryComponent implements OnInit {
     { id: 'h5', number: 'D401', condoId: 'condo1' },
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder) {
     this.dataEntryForm = this.fb.group({
       condominium: ['', Validators.required],
       houseNumber: ['', Validators.required],
@@ -62,21 +60,13 @@ export class DataEntryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // Form initialization is done in the constructor
-    // In a real app, you might fetch condominium and house lists here
-  }
-
   onSubmit(): void {
     if (this.dataEntryForm.valid) {
       console.log('Data Entry Form Submitted:', this.dataEntryForm.value);
       this.dataEntryForm.reset();
-      // Optionally, reset dropdowns to a default state or clear them
-      // this.dataEntryForm.get('condominium')?.setValue('');
-      // this.dataEntryForm.get('houseNumber')?.setValue('');
+      this.dataEntryForm.get('houseNumber')?.setValue('');
     } else {
       console.log('Form is invalid');
-      // Mark all fields as touched to display validation errors
       this.dataEntryForm.markAllAsTouched();
     }
   }
