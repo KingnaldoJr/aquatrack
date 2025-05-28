@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router'; // For breadcrumbs
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,14 +19,12 @@ const MOCK_HOUSES: HouseDialogData[] = [
   selector: 'app-houses',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule, // For routerLink in breadcrumbs
+    RouterModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule,
-    // HouseDialogComponent // Not directly used in template, but dialog service needs it
-  ],
+    MatDialogModule
+],
   templateUrl: './houses.component.html',
   styleUrl: './houses.component.scss'
 })

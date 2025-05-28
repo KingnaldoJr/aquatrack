@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'; // Import ReactiveFormsModule
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,13 +19,12 @@ export interface CondominiumData {
   selector: 'app-condominium-dialog',
   standalone: true,
   imports: [
-    CommonModule,
-    ReactiveFormsModule, // Add ReactiveFormsModule
+    ReactiveFormsModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule
-  ],
+],
   templateUrl: './condominium-dialog.component.html',
   styleUrl: './condominium-dialog.component.scss'
 })

@@ -7,18 +7,22 @@
     <mat-form-field appearance="outline">
       <mat-label>Select Condominium</mat-label>
       <mat-select formControlName="condominium">
-        <mat-option *ngFor="let condo of condominiums" [value]="condo.id">
-          {{condo.name}}
-        </mat-option>
+        @for (condo of condominiums; track condo) {
+          <mat-option [value]="condo.id">
+            {{condo.name}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Select House Number</mat-label>
       <mat-select formControlName="houseNumber">
-        <mat-option *ngFor="let house of houses" [value]="house.id">
-          {{house.number}}
-        </mat-option>
+        @for (house of houses; track house) {
+          <mat-option [value]="house.id">
+            {{house.number}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <!-- Alternative simple input for House Number if select is too complex for now

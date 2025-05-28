@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,12 +18,11 @@ const MOCK_CONDOMINIUMS: CondominiumData[] = [
   selector: 'app-condominiums',
   standalone: true,
   imports: [
-    CommonModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule,
-  ],
+    MatDialogModule
+],
   templateUrl: './condominiums.component.html',
   styleUrl: './condominiums.component.scss'
 })

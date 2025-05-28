@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // For *ngFor
+ // For *ngFor
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,15 +23,14 @@ interface House {
   selector: 'app-data-entry',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule, // Provides NativeDateAdapter
+    MatNativeDateModule,
     MatButtonModule
-  ],
+],
   templateUrl: './data-entry.component.html',
   styleUrl: './data-entry.component.scss',
   // providers: [NativeDateAdapter] // Not needed if MatNativeDateModule is imported
