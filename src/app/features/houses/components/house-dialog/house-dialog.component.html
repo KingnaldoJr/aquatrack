@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit House' : 'Add New House' }}</h2>
+<mat-dialog-content [formGroup]="form">
+  @if (!condominiumId) {
+    <p class="error-message">Condominium context is missing.</p>
+  }
+
+  <mat-form-field appearance="outline">
+    <mat-label>House Number</mat-label>
+    <input matInput formControlName="houseNumber" required>
+    @if (form.get('houseNumber')?.hasError('required')) {
+      <mat-error>House Number is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Resident Name</mat-label>
+    <input matInput formControlName="residentName" required>
+    @if (form.get('residentName')?.hasError('required')) {
+      <mat-error>Resident Name is required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Contact Email</mat-label>
+    <input matInput type="email" formControlName="contactEmail" required>
+    @if (form.get('contactEmail')?.hasError('required')) {
+      <mat-error>Email is required</mat-error>
+    }
+    @if (form.get('contactEmail')?.hasError('email')) {
+      <mat-error>Invalid email format</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Contact Phone</mat-label>
+    <input matInput formControlName="contactPhone" required>
+    @if (form.get('contactPhone')?.hasError('required')) {
+      <mat-error>Contact Phone is required</mat-error>
+    }
+  </mat-form-field>
+
+  <input type="hidden" formControlName="condominiumId">
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSave()" [disabled]="!form.valid || !condominiumId">{{ isEditMode ? 'Save Changes' : 'Add House' }}</button>
+</mat-dialog-actions>

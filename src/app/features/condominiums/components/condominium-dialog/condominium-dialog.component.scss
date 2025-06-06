@@ -1,0 +1,18 @@
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+textarea[matInput] {
+  min-height: 60px;
+}
+
+mat-dialog-actions {
+  padding: 1rem 1.5rem;
+}

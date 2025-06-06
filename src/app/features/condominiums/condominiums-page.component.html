@@ -1,0 +1,17 @@
+<div class="page-container">
+  <div class="header">
+    <h1>Condominiums</h1>
+    <button mat-flat-button color="primary" (click)="onAddCondominium()">
+      <mat-icon>add</mat-icon> Add Condominium
+    </button>
+  </div>
+
+  <app-condominium-list
+    [condominiums]="condominiums()"
+    (edit)="onEditCondominium($event)">
+  </app-condominium-list>
+
+  <div class="footer">
+    &copy; 2024 AquaTrack. All rights reserved.
+  </div>
+</div>

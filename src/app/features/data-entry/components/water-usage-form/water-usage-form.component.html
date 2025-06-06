@@ -1,0 +1,75 @@
+<div class="form-container mat-elevation-z4">
+  <h2>Enter Water Usage Data</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Condominium</mat-label>
+      <mat-select formControlName="condominiumId" required>
+        @for (condo of condominiums; track condo.id) {
+          <mat-option [value]="condo.id">
+            {{ condo.name }}
+          </mat-option>
+        }
+      </mat-select>
+      @if (form.get('condiminiumId')?.hasError('required')) {
+        <mat-error>Condominium is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>House Number</mat-label>
+      <mat-select formControlName="houseId" required>
+        @if (form.get('condominiumId')?.value) {
+          <mat-option disabled>Select a condominium first</mat-option>
+        }
+        @if (form.get('condominiumId')?.value && houses.length === 0) {
+          <mat-option disabled>No houses found for this condominium</mat-option>
+        }
+        @for (house of houses; track house.id) {
+          <mat-option [value]="house.id">
+            {{ house.houseNumber }} - {{ house.residentName }}
+          </mat-option>
+        }
+      </mat-select>
+      @if (form.get('houseId')?.hasError('required')) {
+        <mat-error>House Number is required</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Current Meter Reading (m³)</mat-label>
+        <input matInput type="number" formControlName="currentMeterReading" required min="0">
+        @if (form.get('currentMeterReading')?.hasError('required')) {
+          <mat-error>Current reading is required</mat-error>
+        }
+        @if (form.get('currentMeterReading')?.hasError('min')) {
+          <mat-error>Reading must be positive</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Previous Meter Reading (m³)</mat-label>
+        <input matInput type="number" formControlName="previousMeterReading" required min="0">
+        @if (form.get('previousMeterReading')?.hasError('required')) {
+          <mat-error>Previous reading is required</mat-error>
+        }
+        @if (form.get('previousMeterReading')?.hasError('min')) {
+          <mat-error>Reading must be positive</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date of Reading</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="readingDate" required readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      @if (form.get('readingDate')?.hasError('required')) {
+        <mat-error>Date of reading is required</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid">Submit Data</button>
+  </form>
+</div>

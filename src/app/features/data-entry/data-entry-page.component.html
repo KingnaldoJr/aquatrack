@@ -1,0 +1,12 @@
+<div class="page-container">
+  <app-water-usage-form
+    [condominiums]="condominiums()"
+    [houses]="housesForSelectedCondo()"
+    (condominiumSelected)="onCondominiumSelected($event)"
+    (usageSubmit)="onUsageSubmit($event)">
+  </app-water-usage-form>
+
+  <div class="footer">
+    &copy; 2024 AquaTrack. All rights reserved.
+  </div>
+</div>

@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { CondominiumsComponent } from './components/condominiums/condominiums.component';
-import { HousesComponent } from './components/houses/houses.component';
-import { DataEntryComponent } from './components/data-entry/data-entry.component';
+import { DashboardPageComponent } from './features/dashboard/dashboard-page.component';
+import { CondominiumsPageComponent } from './features/condominiums/condominiums-page.component';
+import { HousesPageComponent } from './features/houses/houses-page.component';
+import { DataEntryPageComponent } from './features/data-entry/data-entry-page.component';
 
 export const routes: Routes = [
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'condominiums', component: CondominiumsComponent },
-    { path: 'houses', component: HousesComponent },
-    { path: 'data-entry', component: DataEntryComponent },
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' } 
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: DashboardPageComponent },
+    { path: 'condominiums', component: CondominiumsPageComponent },
+    { path: 'condominium/:condominiumId/houses', component: HousesPageComponent },
+    { path: 'data-entry', component: DataEntryPageComponent },
 ];
