@@ -1,9 +1,11 @@
-<h2 mat-dialog-title>{{ isEditMode ? 'Edit Condominium' : 'Add New Condominium' }}</h2>
+<h2 mat-dialog-title>
+  {{ isEditMode ? "Edit Condominium" : "Add New Condominium" }}
+</h2>
 <mat-dialog-content [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
-    <input matInput formControlName="name" required>
-    @if (form.get('name')?.hasError('minlength')) {
+    <input matInput formControlName="name" required />
+    @if (form.get("name")?.hasError("minlength")) {
       <mat-error>Name is required</mat-error>
     }
   </mat-form-field>
@@ -11,40 +13,46 @@
   <mat-form-field appearance="outline">
     <mat-label>Address</mat-label>
     <textarea matInput formControlName="address" required></textarea>
-    @if (form.get('address')?.hasError('required')) {
+    @if (form.get("address")?.hasError("required")) {
       <mat-error>Address is required</mat-error>
     }
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Contact Person</mat-label>
-    <input matInput formControlName="contactPerson" required>
-    @if (form.get('contactPerson')?.hasError('required')) {
+    <input matInput formControlName="contactPerson" required />
+    @if (form.get("contactPerson")?.hasError("required")) {
       <mat-error>Contact Person is required</mat-error>
     }
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Contact Email</mat-label>
-    <input matInput type="email" formControlName="contactEmail" required>
-    @if (form.get('contactEmail')?.hasError('required')) {
+    <input matInput type="email" formControlName="contactEmail" required />
+    @if (form.get("contactEmail")?.hasError("required")) {
       <mat-error>Email is required</mat-error>
     }
-    @if (form.get('contactEmail')?.hasError('email')) {
+    @if (form.get("contactEmail")?.hasError("email")) {
       <mat-error>Invalid email format</mat-error>
     }
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Contact Phone</mat-label>
-    <input matInput formControlName="contactPhone" required>
-    @if (form.get('contactPhone')?.hasError('pattern')) {
+    <input matInput formControlName="contactPhone" required />
+    @if (form.get("contactPhone")?.hasError("pattern")) {
       <mat-error>Invalid phone number format</mat-error>
     }
   </mat-form-field>
-
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-flat-button color="primary" (click)="onSave()" [disabled]="!form.valid">{{ isEditMode ? 'Save Changes' : 'Add Condominium' }}</button>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="onSave()"
+    [disabled]="!form.valid"
+  >
+    {{ isEditMode ? "Save Changes" : "Add Condominium" }}
+  </button>
 </mat-dialog-actions>

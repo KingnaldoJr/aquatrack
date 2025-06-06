@@ -1,4 +1,14 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart from 'chart.js/auto';
 
@@ -13,9 +23,11 @@ export interface ChartData {
   imports: [CommonModule],
   template: '<canvas #chartCanvas></canvas>',
   styleUrl: './usage-by-house-chart.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UsageByHouseChartComponent implements OnChanges, AfterViewInit, OnDestroy {
+export class UsageByHouseChartComponent
+  implements OnChanges, AfterViewInit, OnDestroy
+{
   @Input() chartData: ChartData | null = null;
   @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
@@ -45,13 +57,15 @@ export class UsageByHouseChartComponent implements OnChanges, AfterViewInit, OnD
       type: 'bar',
       data: {
         labels: this.chartData.labels,
-        datasets: [{
-          label: 'Usage (L)', // Adjust label as needed
-          data: this.chartData.data,
-          backgroundColor: 'rgba(54, 162, 235, 0.6)', // Blue bars
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        }]
+        datasets: [
+          {
+            label: 'Usage (L)', // Adjust label as needed
+            data: this.chartData.data,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)', // Blue bars
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -60,23 +74,23 @@ export class UsageByHouseChartComponent implements OnChanges, AfterViewInit, OnD
           y: {
             beginAtZero: true,
             title: {
-                display: true,
-                text: 'Consumption (L)'
-            }
+              display: true,
+              text: 'Consumption (L)',
+            },
           },
           x: {
             title: {
-                display: true,
-                text: 'House'
-            }
-          }
+              display: true,
+              text: 'House',
+            },
+          },
         },
         plugins: {
           legend: {
-            display: false // Hide legend as per prototype
-          }
-        }
-      }
+            display: false, // Hide legend as per prototype
+          },
+        },
+      },
     });
   }
 
@@ -88,4 +102,3 @@ export class UsageByHouseChartComponent implements OnChanges, AfterViewInit, OnD
     this.chartInstance.update();
   }
 }
-

@@ -12,20 +12,23 @@
       [value]="averageConsumption()"
       unit="L"
       [percentageChange]="avgConsumptionChange"
-      icon="water_drop">
+      icon="water_drop"
+    >
     </app-summary-card>
     <app-summary-card
       title="Total Consumption"
       [value]="totalConsumption()"
       unit="L"
       [percentageChange]="totalConsumptionChange"
-      icon="opacity">
+      icon="opacity"
+    >
     </app-summary-card>
     <app-summary-card
       title="Houses with High Usage"
       [value]="housesWithHighUsage()"
       [percentageChange]="highUsageChange"
-      icon="warning">
+      icon="warning"
+    >
     </app-summary-card>
   </div>
 
@@ -34,21 +37,25 @@
     <div class="charts-container">
       <div class="chart-card">
         <h3>Usage by House</h3>
-        <app-usage-by-house-chart [chartData]="usageByHouseData()"></app-usage-by-house-chart>
+        <app-usage-by-house-chart
+          [chartData]="usageByHouseData()"
+        ></app-usage-by-house-chart>
       </div>
       <div class="chart-card">
         <h3>Usage Over Time</h3>
-        <app-usage-over-time-chart [chartData]="usageOverTimeData()"></app-usage-over-time-chart>
+        <app-usage-over-time-chart
+          [chartData]="usageOverTimeData()"
+        ></app-usage-over-time-chart>
       </div>
     </div>
   </div>
 
   <div class="detailed-usage-section">
     <h2>Detailed Usage</h2>
-    <app-detailed-usage-table [usageData]="detailedUsageData()"></app-detailed-usage-table>
+    <app-detailed-usage-table
+      [usageData]="detailedUsageData()"
+    ></app-detailed-usage-table>
   </div>
 
-  <div class="footer">
-    &copy; 2024 AquaTrack. All rights reserved.
-  </div>
+  <div class="footer">&copy; 2024 AquaTrack. All rights reserved.</div>
 </div>

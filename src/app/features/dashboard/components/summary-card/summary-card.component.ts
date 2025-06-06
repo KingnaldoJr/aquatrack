@@ -6,14 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-summary-card',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatIconModule
-  ],
+  imports: [CommonModule, MatCardModule, MatIconModule],
   templateUrl: './summary-card.component.html',
   styleUrl: './summary-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SummaryCardComponent {
   @Input({ required: true }) title = '';

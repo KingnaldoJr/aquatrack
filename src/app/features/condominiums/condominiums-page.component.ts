@@ -15,10 +15,10 @@ import { CondominiumStateService } from '../../core/services/condominium-state.s
     CommonModule,
     CondominiumListComponent,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './condominiums-page.component.html',
-  styleUrl: './condominiums-page.component.scss'
+  styleUrl: './condominiums-page.component.scss',
 })
 export class CondominiumsPageComponent {
   private condominiumState = inject(CondominiumStateService);
@@ -37,17 +37,23 @@ export class CondominiumsPageComponent {
   private openDialog(data?: Condominium): void {
     const dialogRef = this.dialog.open(CondominiumDialogComponent, {
       width: '500px',
-      data: data ? { ...data } : null
+      data: data ? { ...data } : null,
     });
 
-    dialogRef.afterClosed().subscribe((result: Omit<Condominium, 'id'> | Condominium | undefined) => {
-      if (result) {
-        if ('id' in result) {
-          this.condominiumState.updateCondominium(result as Condominium);
-        } else {
-          this.condominiumState.addCondominium(result as Omit<Condominium, 'id'>);
-        }
-      }
-    });
+    dialogRef
+      .afterClosed()
+      .subscribe(
+        (result: Omit<Condominium, 'id'> | Condominium | undefined) => {
+          if (result) {
+            if ('id' in result) {
+              this.condominiumState.updateCondominium(result as Condominium);
+            } else {
+              this.condominiumState.addCondominium(
+                result as Omit<Condominium, 'id'>,
+              );
+            }
+          }
+        },
+      );
   }
 }

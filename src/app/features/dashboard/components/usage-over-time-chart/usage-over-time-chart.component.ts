@@ -1,4 +1,14 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart from 'chart.js/auto';
 import { ChartData } from '../usage-by-house-chart/usage-by-house-chart.component';
@@ -9,9 +19,11 @@ import { ChartData } from '../usage-by-house-chart/usage-by-house-chart.componen
   imports: [CommonModule],
   template: '<canvas #chartCanvas></canvas>',
   styleUrl: './usage-over-time-chart.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UsageOverTimeChartComponent implements OnChanges, AfterViewInit, OnDestroy {
+export class UsageOverTimeChartComponent
+  implements OnChanges, AfterViewInit, OnDestroy
+{
   @Input() chartData: ChartData | null = null;
   @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
@@ -41,14 +53,16 @@ export class UsageOverTimeChartComponent implements OnChanges, AfterViewInit, On
       type: 'line',
       data: {
         labels: this.chartData.labels,
-        datasets: [{
-          label: 'Usage (L)',
-          data: this.chartData.data,
-          fill: true,
-          borderColor: 'rgb(75, 192, 192)',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          tension: 0.4
-        }]
+        datasets: [
+          {
+            label: 'Usage (L)',
+            data: this.chartData.data,
+            fill: true,
+            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.4,
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -57,23 +71,23 @@ export class UsageOverTimeChartComponent implements OnChanges, AfterViewInit, On
           y: {
             beginAtZero: true,
             title: {
-                display: true,
-                text: 'Total Consumption (L)'
-            }
+              display: true,
+              text: 'Total Consumption (L)',
+            },
           },
-           x: {
+          x: {
             title: {
-                display: true,
-                text: 'Month'
-            }
-          }
+              display: true,
+              text: 'Month',
+            },
+          },
         },
         plugins: {
           legend: {
-            display: false
-          }
-        }
-      }
+            display: false,
+          },
+        },
+      },
     });
   }
 

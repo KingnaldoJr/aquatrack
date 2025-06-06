@@ -18,10 +18,10 @@ import { HouseStateService } from '../../core/services/house-state.service';
     SummaryCardComponent,
     UsageByHouseChartComponent,
     UsageOverTimeChartComponent,
-    DetailedUsageTableComponent
+    DetailedUsageTableComponent,
   ],
   templateUrl: './dashboard-page.component.html',
-  styleUrl: './dashboard-page.component.scss'
+  styleUrl: './dashboard-page.component.scss',
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
   private usageState = inject(UsageStateService);
@@ -43,20 +43,22 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   selectedCondominiumId: string | null = null;
 
   ngOnInit(): void {
-    this.routeSub = this.route.paramMap.pipe(
-      map(params => params.get('condominiumId')),
-      tap(condoId => {
-        this.selectedCondominiumId = condoId;
-        this.houseState.selectCondominium(condoId);
-      })
-    ).subscribe();
+    this.routeSub = this.route.paramMap
+      .pipe(
+        map((params) => params.get('condominiumId')),
+        tap((condoId) => {
+          this.selectedCondominiumId = condoId;
+          this.houseState.selectCondominium(condoId);
+        }),
+      )
+      .subscribe();
 
     if (!this.selectedCondominiumId) {
-        this.houseState.selectCondominium(null);
+      this.houseState.selectCondominium(null);
     }
   }
 
   ngOnDestroy(): void {
-      this.routeSub?.unsubscribe();
+    this.routeSub?.unsubscribe();
   }
 }

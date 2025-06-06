@@ -1,6 +1,20 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -30,11 +44,11 @@ export interface WaterUsageFormValue {
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './water-usage-form.component.html',
   styleUrl: './water-usage-form.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WaterUsageFormComponent implements OnInit, OnDestroy {
   @Input({ required: true }) condominiums: Condominium[] = [];
@@ -52,22 +66,24 @@ export class WaterUsageFormComponent implements OnInit, OnDestroy {
       houseId: [{ value: null, disabled: true }, Validators.required],
       currentMeterReading: [null, [Validators.required, Validators.min(0)]],
       previousMeterReading: [null, [Validators.required, Validators.min(0)]],
-      readingDate: [null, Validators.required]
+      readingDate: [null, Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.condoSub = this.form.get('condominiumId')?.valueChanges.subscribe(condoId => {
-      const houseControl = this.form.get('houseId');
-      houseControl?.reset();
-      if (condoId) {
-        houseControl?.enable();
-        this.condominiumSelected.emit(condoId);
-      } else {
-        houseControl?.disable();
-        this.condominiumSelected.emit(null);
-      }
-    });
+    this.condoSub = this.form
+      .get('condominiumId')
+      ?.valueChanges.subscribe((condoId) => {
+        const houseControl = this.form.get('houseId');
+        houseControl?.reset();
+        if (condoId) {
+          houseControl?.enable();
+          this.condominiumSelected.emit(condoId);
+        } else {
+          houseControl?.disable();
+          this.condominiumSelected.emit(null);
+        }
+      });
   }
 
   ngOnDestroy(): void {
@@ -79,7 +95,9 @@ export class WaterUsageFormComponent implements OnInit, OnDestroy {
       const formValue = this.form.value;
       const submissionValue: WaterUsageFormValue = {
         ...formValue,
-        readingDate: formValue.readingDate ? new Date(formValue.readingDate).toISOString() : ''
+        readingDate: formValue.readingDate
+          ? new Date(formValue.readingDate).toISOString()
+          : '',
       };
       this.usageSubmit.emit(submissionValue);
     }

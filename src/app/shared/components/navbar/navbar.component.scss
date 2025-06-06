@@ -59,7 +59,6 @@ button[mat-icon-button] mat-icon {
   color: var(--text-color);
 }
 
-
 @media (max-width: 768px) {
   mat-toolbar.navbar {
     height: 56px;
@@ -85,7 +84,7 @@ button[mat-icon-button] mat-icon {
       margin: 2px 5px;
     }
   }
-   .spacer {
+  .spacer {
     display: none;
   }
   button[mat-icon-button] {

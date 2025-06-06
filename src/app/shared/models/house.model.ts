@@ -6,4 +6,3 @@ export interface House {
   contactEmail: string;
   contactPhone: string;
 }
-

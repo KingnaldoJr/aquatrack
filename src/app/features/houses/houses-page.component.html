@@ -2,14 +2,19 @@
   <div class="breadcrumbs">
     <a routerLink="/condominiums">Condominiums</a>
     <mat-icon>chevron_right</mat-icon>
-    <span>{{ selectedCondominium?.name ?? 'Select Condominium' }}</span>
+    <span>{{ selectedCondominium?.name ?? "Select Condominium" }}</span>
     <mat-icon>chevron_right</mat-icon>
     <span>Houses</span>
   </div>
 
   <div class="header">
     <h1>Houses Management</h1>
-    <button mat-flat-button color="primary" (click)="onAddHouse()" [disabled]="!selectedCondominiumId">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="onAddHouse()"
+      [disabled]="!selectedCondominiumId"
+    >
       <mat-icon>add</mat-icon> Add New House
     </button>
   </div>
@@ -18,12 +23,8 @@
     Manage individual houses within the selected condominium.
   </div>
 
-  <app-house-list
-    [houses]="houses()"
-    (edit)="onEditHouse($event)">
+  <app-house-list [houses]="houses()" (edit)="onEditHouse($event)">
   </app-house-list>
 
-  <div class="footer">
-    &copy; 2024 AquaTrack. All rights reserved.
-  </div>
+  <div class="footer">&copy; 2024 AquaTrack. All rights reserved.</div>
 </div>

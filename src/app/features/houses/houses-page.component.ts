@@ -22,10 +22,10 @@ import { House } from '../../shared/models/house.model';
     RouterLink,
     HouseListComponent,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './houses-page.component.html',
-  styleUrl: './houses-page.component.scss'
+  styleUrl: './houses-page.component.scss',
 })
 export class HousesPageComponent implements OnInit, OnDestroy {
   private houseState = inject(HouseStateService);
@@ -39,18 +39,22 @@ export class HousesPageComponent implements OnInit, OnDestroy {
   selectedCondominiumId: string | null = null;
 
   ngOnInit(): void {
-    this.routeSub = this.route.paramMap.pipe(
-      map(params => params.get('condominiumId')),
-      filter((id): id is string => id !== null),
-      tap(condoId => {
-        this.selectedCondominiumId = condoId;
-        this.houseState.selectCondominium(condoId);
-        this.selectedCondominium = this.condominiumState.condominiums().find(c => c.id === condoId);
-      })
-    ).subscribe();
+    this.routeSub = this.route.paramMap
+      .pipe(
+        map((params) => params.get('condominiumId')),
+        filter((id): id is string => id !== null),
+        tap((condoId) => {
+          this.selectedCondominiumId = condoId;
+          this.houseState.selectCondominium(condoId);
+          this.selectedCondominium = this.condominiumState
+            .condominiums()
+            .find((c) => c.id === condoId);
+        }),
+      )
+      .subscribe();
 
     if (!this.selectedCondominiumId) {
-        this.houseState.selectCondominium(null);
+      this.houseState.selectCondominium(null);
     }
   }
 
@@ -73,18 +77,20 @@ export class HousesPageComponent implements OnInit, OnDestroy {
       width: '500px',
       data: {
         house: data ? { ...data } : null,
-        condominiumId: this.selectedCondominiumId
-      }
+        condominiumId: this.selectedCondominiumId,
+      },
     });
 
-    dialogRef.afterClosed().subscribe((result: Omit<House, 'id'> | House | undefined) => {
-      if (result) {
-        if ('id' in result) {
-          this.houseState.updateHouse(result as House);
-        } else {
-          this.houseState.addHouse(result as Omit<House, 'id'>);
+    dialogRef
+      .afterClosed()
+      .subscribe((result: Omit<House, 'id'> | House | undefined) => {
+        if (result) {
+          if ('id' in result) {
+            this.houseState.updateHouse(result as House);
+          } else {
+            this.houseState.addHouse(result as Omit<House, 'id'>);
+          }
         }
-      }
-    });
+      });
   }
 }

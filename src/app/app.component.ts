@@ -13,10 +13,10 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    NavbarComponent
+    NavbarComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'condominium-management-system';

@@ -1,10 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Condominium } from '../../../../shared/models/condominium.model';
 
 @Component({
@@ -16,12 +25,12 @@ import { Condominium } from '../../../../shared/models/condominium.model';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './condominium-dialog.component.html',
-  styleUrl: './condominium-dialog.component.scss'
+  styleUrl: './condominium-dialog.component.scss',
 })
-export class CondominiumDialogComponent  {
+export class CondominiumDialogComponent {
   private fb = inject(FormBuilder);
   dialogRef = inject<MatDialogRef<CondominiumDialogComponent>>(MatDialogRef);
   data = inject<Condominium | null>(MAT_DIALOG_DATA);
@@ -38,8 +47,11 @@ export class CondominiumDialogComponent  {
       name: [data?.name ?? '', Validators.required],
       address: [data?.address ?? '', Validators.required],
       contactPerson: [data?.contactPerson ?? '', Validators.required],
-      contactEmail: [data?.contactEmail ?? '', [Validators.required, Validators.email]],
-      contactPhone: [data?.contactPhone ?? '', Validators.required]
+      contactEmail: [
+        data?.contactEmail ?? '',
+        [Validators.required, Validators.email],
+      ],
+      contactPhone: [data?.contactPhone ?? '', Validators.required],
     });
   }
 

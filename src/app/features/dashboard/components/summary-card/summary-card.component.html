@@ -7,15 +7,19 @@
   </mat-card-header>
   <mat-card-content>
     <div class="value-container">
-      <span class="value">{{ value | number:'1.0-0' }}</span>
+      <span class="value">{{ value | number: "1.0-0" }}</span>
       @if (unit) {
         <span class="unit">{{ unit }}</span>
       }
     </div>
     @if (percentageChange !== null && percentageChange !== undefined) {
       <div class="change-container">
-        <mat-icon [ngClass]="changeClass" class="change-icon">{{ changeIcon }}</mat-icon>
-        <span [ngClass]="changeClass" class="change-value">{{ percentageChange | number:'1.0-0' }}%</span>
+        <mat-icon [ngClass]="changeClass" class="change-icon">{{
+          changeIcon
+        }}</mat-icon>
+        <span [ngClass]="changeClass" class="change-value"
+          >{{ percentageChange | number: "1.0-0" }}%</span
+        >
       </div>
     }
   </mat-card-content>

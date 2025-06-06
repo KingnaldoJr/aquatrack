@@ -6,4 +6,3 @@ export interface Condominium {
   contactEmail: string;
   contactPhone: string;
 }
-

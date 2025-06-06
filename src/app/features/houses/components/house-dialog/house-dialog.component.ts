@@ -1,10 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { House } from '../../../../shared/models/house.model';
 
 export interface HouseDialogData {
@@ -21,10 +30,10 @@ export interface HouseDialogData {
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './house-dialog.component.html',
-  styleUrl: './house-dialog.component.scss'
+  styleUrl: './house-dialog.component.scss',
 })
 export class HouseDialogComponent {
   private fb = inject(FormBuilder);
@@ -46,8 +55,11 @@ export class HouseDialogComponent {
       condominiumId: [this.condominiumId, Validators.required],
       houseNumber: [data.house?.houseNumber ?? '', Validators.required],
       residentName: [data.house?.residentName ?? '', Validators.required],
-      contactEmail: [data.house?.contactEmail ?? '', [Validators.required, Validators.email]],
-      contactPhone: [data.house?.contactPhone ?? '', Validators.required]
+      contactEmail: [
+        data.house?.contactEmail ?? '',
+        [Validators.required, Validators.email],
+      ],
+      contactPhone: [data.house?.contactPhone ?? '', Validators.required],
     });
   }
 
