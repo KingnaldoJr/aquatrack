@@ -38,8 +38,6 @@ export class HousesPageComponent implements OnInit, OnDestroy {
   selectedCondominium: Condominium | undefined;
   selectedCondominiumId: string | null = null;
 
-  constructor() {}
-
   ngOnInit(): void {
     this.routeSub = this.route.paramMap.pipe(
       map(params => params.get('condominiumId')),

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,15 +21,17 @@ import { Condominium } from '../../../../shared/models/condominium.model';
   templateUrl: './condominium-dialog.component.html',
   styleUrl: './condominium-dialog.component.scss'
 })
-export class CondominiumDialogComponent implements OnInit {
+export class CondominiumDialogComponent  {
+  private fb = inject(FormBuilder);
+  dialogRef = inject<MatDialogRef<CondominiumDialogComponent>>(MatDialogRef);
+  data = inject<Condominium | null>(MAT_DIALOG_DATA);
+
   form: FormGroup;
   isEditMode: boolean;
 
-  constructor(
-    private fb: FormBuilder,
-    public dialogRef: MatDialogRef<CondominiumDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Condominium | null
-  ) {
+  constructor() {
+    const data = this.data;
+
     this.isEditMode = !!data;
     this.form = this.fb.group({
       id: [data?.id],
@@ -40,8 +42,6 @@ export class CondominiumDialogComponent implements OnInit {
       contactPhone: [data?.contactPhone ?? '', Validators.required]
     });
   }
-
-  ngOnInit(): void {}
 
   onCancel(): void {
     this.dialogRef.close();

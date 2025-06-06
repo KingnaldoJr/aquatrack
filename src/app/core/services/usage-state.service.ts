@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import {Injectable, signal, computed, inject} from '@angular/core';
 import { WaterUsage, DetailedUsage } from '../../shared/models/usage.model';
 import { HouseStateService } from './house-state.service';
 
@@ -21,8 +21,9 @@ const MOCK_USAGE: WaterUsage[] = [
 export class UsageStateService {
   private readonly _usageData = signal<WaterUsage[]>([]);
   readonly usageData = this._usageData.asReadonly();
+  private houseState = inject(HouseStateService);
 
-  constructor(private houseState: HouseStateService) {
+  constructor() {
     this.loadUsageData();
   }
 
@@ -80,15 +81,13 @@ export class UsageStateService {
 
   readonly usageOverTimeChartData = computed(() => {
     const usage = this.usageForSelectedCondo();
-    const monthlyConsumption: { [month: string]: number } = {};
+    const monthlyConsumption: Record<string, number> = {};
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     usage.forEach(u => {
       const monthIndex = u.readingDate.getMonth();
       const year = u.readingDate.getFullYear();
       const key = `${year}-${monthIndex}`;
-      const monthLabel = monthNames[monthIndex];
-
       if (!monthlyConsumption[key]) {
         monthlyConsumption[key] = 0;
       }

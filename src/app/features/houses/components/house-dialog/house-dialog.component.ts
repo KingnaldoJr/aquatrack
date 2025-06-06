@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,15 +27,17 @@ export interface HouseDialogData {
   styleUrl: './house-dialog.component.scss'
 })
 export class HouseDialogComponent {
+  private fb = inject(FormBuilder);
+  dialogRef = inject<MatDialogRef<HouseDialogComponent>>(MatDialogRef);
+  data = inject<HouseDialogData>(MAT_DIALOG_DATA);
+
   form: FormGroup;
   isEditMode: boolean;
   condominiumId: string;
 
-  constructor(
-    private fb: FormBuilder,
-    public dialogRef: MatDialogRef<HouseDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: HouseDialogData
-  ) {
+  constructor() {
+    const data = this.data;
+
     this.isEditMode = !!data.house;
     this.condominiumId = data.condominiumId;
 

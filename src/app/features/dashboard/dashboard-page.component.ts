@@ -42,8 +42,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   selectedCondominiumId: string | null = null;
 
-  constructor() {}
-
   ngOnInit(): void {
     this.routeSub = this.route.paramMap.pipe(
       map(params => params.get('condominiumId')),

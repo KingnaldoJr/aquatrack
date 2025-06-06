@@ -16,11 +16,11 @@ import { MatIconModule } from '@angular/material/icon';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SummaryCardComponent {
-  @Input({ required: true }) title: string = '';
+  @Input({ required: true }) title = '';
   @Input({ required: true }) value: number | string = 0;
-  @Input() unit: string = '';
+  @Input() unit = '';
   @Input() percentageChange: number | null = null;
-  @Input() icon: string = '';
+  @Input() icon = '';
 
   get changeClass(): string {
     if (this.percentageChange === null || this.percentageChange === undefined) {
