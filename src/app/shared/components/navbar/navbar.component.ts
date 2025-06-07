@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatMenuModule,
     RouterModule,
+    NgOptimizedImage,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

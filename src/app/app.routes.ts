@@ -8,6 +8,6 @@ export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardPageComponent },
   { path: 'condominiums', component: CondominiumsPageComponent },
-  { path: 'condominium/:condominiumId/houses', component: HousesPageComponent },
+  { path: 'houses', component: HousesPageComponent },
   { path: 'data-entry', component: DataEntryPageComponent },
 ];

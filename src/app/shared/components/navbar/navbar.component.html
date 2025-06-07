@@ -1,23 +1,38 @@
-<mat-toolbar color="primary" class="navbar">
-  <span class="logo">CMS</span>
-  <div class="nav-links">
-    <a mat-button routerLink="/dashboard" routerLinkActive="active-link"
+<header class="header">
+  <div class="header__logo">
+    <img ngSrc="logo.svg" alt="AquaTrack Logo" width="32" height="32" />
+    <h2 class="header__logo__title">AquaTrack</h2>
+  </div>
+  <nav class="header__menu">
+    <a
+      class="header__menu__item"
+      routerLink="/dashboard"
+      routerLinkActive="header__menu__item_active"
       >Dashboard</a
     >
-    <a mat-button routerLink="/condominiums" routerLinkActive="active-link"
+    <a
+      class="header__menu__item"
+      routerLink="/condominiums"
+      routerLinkActive="header__menu__item_active"
       >Condominiums</a
     >
-    <a mat-button routerLink="/houses" routerLinkActive="active-link">Houses</a>
-    <a mat-button routerLink="/data-entry" routerLinkActive="active-link"
-      >Data Entry</a
+    <a
+      class="header__menu__item"
+      routerLink="/houses"
+      routerLinkActive="header__menu__item_active"
+      >Houses</a
     >
+    <a
+      class="header__menu__item"
+      routerLink="/data-entry"
+      routerLinkActive="header__menu__item_active"
+      >Consumption</a
+    >
+  </nav>
+  <div class="header__profile">
+    <button class="header__profile__notification">
+      <span class="material-symbols-outlined">notifications</span>
+    </button>
+    <div class="header__profile__user"></div>
   </div>
-  <div class="spacer"></div>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Profile Settings</button>
-    <button mat-menu-item>Logout</button>
-  </mat-menu>
-</mat-toolbar>
+</header>

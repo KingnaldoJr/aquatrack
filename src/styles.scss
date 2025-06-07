@@ -1,52 +1,11 @@
-:root {
-  --background-color: #f0f0f0;
-  --primary-accent-color: #4a90e2;
-  --text-color: #333333;
-  --secondary-text-color: #666666;
-  --mat-primary-color-for-theme: #3f51b5;
-  --mat-accent-color-for-theme: #ff4081;
-}
+@use "tailwindcss";
 
-html,
-body {
-  height: 100%;
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
-  margin: 0;
-  font-family:
-    "Roboto",
-    "Open Sans",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  @apply bg-gray-50;
 }
 
-.mat-mdc-table .mat-mdc-row:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
-.mat-mdc-row:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--text-color);
-}
-
-a {
-  color: var(--primary-accent-color);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+@theme {
+  --font-sans: "Public Sans", "Noto Sans", sans-serif;
 }
