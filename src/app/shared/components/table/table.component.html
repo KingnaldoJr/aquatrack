@@ -1,0 +1,62 @@
+<div class="table">
+  <table>
+    <thead class="table__header">
+      <tr>
+        @for (column of tableColumns; track column.key) {
+          <th
+            class="table__header__item"
+            scope="col"
+            [ngClass]="{
+              'table__header__item--start': column.align === 'start',
+              'table__header__item--center': column.align === 'center',
+              'table__header__item--end': column.align === 'end',
+            }"
+            [ngStyle]="{
+              display:
+                column.minWidth && columnShouldBeHidden(column.minWidth)
+                  ? 'none'
+                  : '',
+            }"
+          >
+            {{ column.label }}
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody class="table__body">
+      @for (item of tableData; track item["id"]) {
+        <tr class="table__body__line">
+          @for (column of tableColumns; track column.key) {
+            <td
+              class="table__body__line__item"
+              [ngClass]="{
+                'table__body__line__item--start': column.align === 'start',
+                'table__body__line__item--center': column.align === 'center',
+                'table__body__line__item--end': column.align === 'end',
+              }"
+              [ngStyle]="{
+                display:
+                  column.minWidth && columnShouldBeHidden(column.minWidth)
+                    ? 'none'
+                    : '',
+              }"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  column.isContent && getColumnTemplate(column)
+                    ? getColumnTemplate(column)
+                    : defaultContent;
+                  context: { $implicit: { item, column } }
+                "
+              >
+              </ng-container>
+              <ng-template #defaultContent let-data>
+                {{ data.item[data.column.key] }}
+              </ng-template>
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
