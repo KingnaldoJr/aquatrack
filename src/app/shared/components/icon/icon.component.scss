@@ -1,0 +1,11 @@
+:host {
+  line-height: 0;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0;
+
+  &.filled {
+    font-variation-settings: "FILL" 1;
+  }
+}

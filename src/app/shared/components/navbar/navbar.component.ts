@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-navbar',
@@ -16,8 +17,16 @@ import { NgOptimizedImage } from '@angular/common';
     MatMenuModule,
     RouterModule,
     NgOptimizedImage,
+    IconComponent,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  menuItems = [
+    { label: 'Dashboard', route: '/dashboard' },
+    { label: 'Condominiums', route: '/condominiums' },
+    { label: 'Houses', route: '/houses' },
+    { label: 'Consumption', route: '/data-entry' },
+  ];
+}

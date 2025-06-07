@@ -4,34 +4,18 @@
     <h2 class="header__logo__title">AquaTrack</h2>
   </div>
   <nav class="header__menu">
-    <a
-      class="header__menu__item"
-      routerLink="/dashboard"
-      routerLinkActive="header__menu__item_active"
-      >Dashboard</a
-    >
-    <a
-      class="header__menu__item"
-      routerLink="/condominiums"
-      routerLinkActive="header__menu__item_active"
-      >Condominiums</a
-    >
-    <a
-      class="header__menu__item"
-      routerLink="/houses"
-      routerLinkActive="header__menu__item_active"
-      >Houses</a
-    >
-    <a
-      class="header__menu__item"
-      routerLink="/data-entry"
-      routerLinkActive="header__menu__item_active"
-      >Consumption</a
-    >
+    @for (item of menuItems; track item.label) {
+      <a
+        class="header__menu__item"
+        [routerLink]="item.route"
+        routerLinkActive="header__menu__item_active"
+        >{{ item.label }}</a
+      >
+    }
   </nav>
   <div class="header__profile">
     <button class="header__profile__notification">
-      <span class="material-symbols-outlined">notifications</span>
+      <app-icon name="notifications" [fill]="true"></app-icon>
     </button>
     <div class="header__profile__user"></div>
   </div>
